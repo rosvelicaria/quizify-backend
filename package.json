@@ -4,7 +4,7 @@
   "main": "index.js",
    "scripts": {
   "build": "echo 'No build step required for backend'",
-  "install": "npm install",  // Add this line to ensure dependencies are installed
+  "install": "npm install",  
   "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
