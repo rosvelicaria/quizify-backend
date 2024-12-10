@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Quizify: AI-Generated Quiz</title>
+    <meta name="description" content="Simple landing page" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
+    <style>
+      .gradient {
+        background: linear-gradient(90deg, #0c71ca 0%, #2bef90 100%);
+      }
+      body {
+        font-family: 'Source Sans Pro', sans-serif;
+        scroll-behavior: smooth;
+      }
+      .hidden {
+        display: none;
+      }
+      #quiz-section {
+        text-align: left;
+      }
+      .centered-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      .centered-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">
+    <!-- Nav -->
+    <nav id="header" class="fixed w-full z-30 top-0 text-white">
+      <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
+        <div class="pl-4 flex items-center">
+          <a class="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
+            <img src="qlogo.PNG" alt="" class="h-12 inline">
+            Quizify
+          </a>
+        </div>
+      <hr class="border-b border-gray-100 opacity-25 my-0 py-0" />
+    </nav>
+
+    <div class="pt-24">
+      <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center centered-content">
+        <!-- Left Column -->
+        <div class="flex flex-col w-full md:w-2/5 justify-center items-center text-center">
+          <p class="uppercase tracking-loose w-full text-center">Welcome to</p>
+          <h1 class="my-4 text-5xl font-bold leading-tight text-center">
+            Quizify: AI Generated Quiz!
+          </h1>
+          <p class="leading-normal text-2xl mb-8 text-center">
+            Quizify: Upload and Create, No Need to Wait!
+          </p>
+          <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+            <a href="#get-started">Get Started</a>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Upload Section -->
+     <section id="get-started">
+    <section class="bg-white border-b py-8">
+      <div class="container mx-auto flex flex-wrap pt-4 pb-12 centered-content">
+        <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">Let's Start</h2>
+        <div class="w-full mb-4">
+          <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+          <div class="w-full md:w-1/ p-6 flex flex-col flex-grow flex-shrink centered-container">
+            <!-- White Container -->
+            <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden ce shadow p-6">
+              <!-- Header -->
+              <div class="w-full font-bold text-xl text-gray-800 mb-2 text-center">
+                Upload files here
+              </div>
+              <!-- Description -->
+              <p class="text-gray-800 text-base mb-5 text-center">
+                Upload any files that end with .docx, .pdf, or .txt.
+              </p>
+              <!-- File Input and Upload Button -->
+              <div class="flex flex-col items-center">
+                <input type="file" id="lesson-plan" accept=".txt, .docx, .pdf"
+                  class="text-gray-800 font-bold rounded-full py-2 px-4 mb-4 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+                  style="font-size: 0.9rem; border: 1px solid #e0e0e0; background-color: #f3efef; cursor: pointer;">
+                <button id="uploadBtn" class="mx-auto lg:mx-0 bg-gradient text-white font-bold rounded-full py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+                  style="background: linear-gradient(90deg, #0c71ca 0%, #2bef90 100%);">
+                  Upload File
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+    <!-- Quiz Section -->
+    <section id="quiz-section" class="bg-white border-b py-8 hidden">
+      <div class="container mx-auto text-center">
+        <h2 class="w-full text-5xl font-bold leading-tight text-gray-800 text-center">Your Quiz</h2>
+        <form id="quiz-form" class="mt-8 centered-content"></form>
+        <button id="submit-quiz" class="bg-gradient text-black border-px-1 font-bold py-2 px-6 rounded-full mt-4 mx-auto block">Submit Quiz</button>
+        <div id="score" class="text-xl text-black font-bold mt-4 text-center"></div>
+      </div>
+    </section>
+
+    
+     <!-- Toggle Button -->
+     <button id="toggle-about-btn" class=" font-bold py-2 px-10 rounded mt-4 mx-auto block">
+      Learn More
+  </button>
+
+  <!-- Quiz Section -->
+  <section id="about-us" class="bg-white border-b py-8 hidden">
+    <div class="container mx-auto text-center">
+        <h2 class="w-full text-5xl font-bold leading-tight text-gray-800 text-center">About Quizify</h2>
+        <p class="text-gray-800 text-base mb-5 text-center">
+            Quizify is an intuitive web app designed to help educators streamline the quiz creation process by automatically generating quiz questions
+            from uploaded lesson plans. Teachers can easily upload lesson plan files in various formats like .txt, .docx, or .pdf, and the app processes this
+            content to create a set of multiple-choice questions. This eliminates the need for educators to manually craft quizzes, saving time and effort while
+            ensuring the quiz content is relevant to the lesson material. <br>Once the quiz is generated, users can answer the multiple-choice questions, with each option
+            accompanied by a radio button. After completing the quiz, the app provides instant feedback by marking correct answers in green and incorrect answers with a red strike-through.
+            This immediate feedback helps learners understand their mistakes and reinforces the material. Users can also track their scores and view their grade percentage,
+            giving them a clear understanding of their performance.
+          </p>
+      </div>
+  </section>
+
+    <footer class="bg-gray-900 text-white py-6 text-center">
+      <p>&copy; 2024 Quizify. All rights reserved.</p>
+    </footer>
+
+    <script>
+      // Select the button and the About Us section
+      const toggleAboutButton = document.getElementById('toggle-about-btn');
+        const aboutSection = document.getElementById('about-us');
+
+        // Add click event listener to toggle visibility
+        toggleAboutButton.addEventListener('click', () => {
+            if (aboutSection.classList.contains('hidden')) {
+                aboutSection.classList.remove('hidden'); // Show the section
+                toggleAboutButton.textContent = 'Hide'; // Update button text
+            } else {
+                aboutSection.classList.add('hidden'); // Hide the section
+                toggleAboutButton.textContent = 'Learn More'; // Update button text
+            }
+        });
+     // Handle file upload
+document.getElementById('uploadBtn').addEventListener('click', async () => {
+  const fileInput = document.getElementById('lesson-plan');
+  const file = fileInput.files[0];
+
+  if (!file) {
+    alert('Please select a file first!');
+    return;
+  }
+
+  // Simulate a file upload (mock response for now)
+  const simulatedResponse = {
+    message: 'File uploaded!',
+    questions: [
+      { question: 'What is the capital of France?', options: ['Paris', 'London', 'Berlin', 'Rome'], correct: 'A' },
+      { question: 'Who wrote "Romeo and Juliet"?', options: ['Shakespeare', 'Dickens', 'Austen', 'Hemingway'], correct: 'A' },
+    ],
+  };
+
+  // Simulate the delay of a file upload (use setTimeout to simulate async behavior)
+  setTimeout(() => {
+    const data = simulatedResponse;
+
+    if (data.message === 'File uploaded!') {
+      alert('File uploaded successfully!');  // Show alert upon success
+      document.getElementById('quiz-section').classList.remove('hidden');
+      generateQuiz(data.questions);
+    } else {
+      alert('File upload failed');
+    }
+  }, 1000);  // Simulate 1 second delay for file upload
+});
+
+
+      // Generate quiz
+      // Generate quiz
+function generateQuiz(questions) {
+  const quizForm = document.getElementById('quiz-form');
+  quizForm.innerHTML = ''; // Clear any existing questions
+
+  questions.forEach((question, index) => {
+    const questionElement = document.createElement('div');
+    questionElement.classList.add('mb-6', 'quiz-question');
+
+    questionElement.innerHTML = `
+      <div class="text-gray-800 font-semibold mb-2 quiz-question">${question.question}</div>
+      <label class="block text-gray-600 text-left quiz-option">
+        <input type="radio" name="q${index}" value="A" class="mr-2"> A. ${question.options[0]}
+      </label>
+      <label class="block text-gray-600 text-left quiz-option">
+        <input type="radio" name="q${index}" value="B" class="mr-2"> B. ${question.options[1]}
+      </label>
+      <label class="block text-gray-600 text-left quiz-option">
+        <input type="radio" name="q${index}" value="B" class="mr-2"> B. ${question.options[2]}
+      </label>
+      <label class="block text-gray-600 text-left quiz-option">
+        <input type="radio" name="q${index}" value="B" class="mr-2"> B. ${question.options[3]}
+      </label>
+    `;
+    quizForm.appendChild(questionElement);
+  });
+}
+
+
+      // Submit quiz and calculate score
+      document.getElementById('submit-quiz').addEventListener('click', () => {
+        const questions = [
+          { question: 'What is the capital of France?', options: ['Paris', 'London', 'Berlin', 'Rome'], correct: 'A' },
+          { question: 'Who wrote "Romeo and Juliet"?', options: ['Shakespeare', 'Dickens', 'Austen', 'Hemingway'], correct: 'A' },
+        ];
+
+        let score = 0;
+        questions.forEach((question, index) => {
+          const selectedOption = document.querySelector(`input[name="q${index}"]:checked`);
+          if (selectedOption && selectedOption.value === question.correct) {
+            score++;
+          }
+        });
+
+        document.getElementById('score').textContent = `Your score: ${score} / ${questions.length}`;
+      });
+    </script>
+  </body>
+</html>
